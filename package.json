@@ -1,0 +1,8 @@
+{
+  "name": "JAUS",
+  "version": "1.0.0",
+  "description": "Yet Another Url Shortener (that starts with J)",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT"
+}
