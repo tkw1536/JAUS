@@ -2,7 +2,22 @@
   "name": "JAUS",
   "version": "1.0.0",
   "description": "Yet Another Url Shortener (that starts with J)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tkw1536/JAUS.git"
+  },
   "main": "index.js",
-  "author": "",
-  "license": "MIT"
+  "author": "Tom Wiesing <tkw01536@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^0.8.4",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "extend": "^3.0.0",
+    "mongoose": "^4.1.1",
+    "mustache-express": "^1.2.1",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "winston": "^1.0.1"
+  }
 }

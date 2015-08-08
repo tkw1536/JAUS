@@ -1,2 +1,2 @@
-console.log("Unimplemented. ");
-process.exit(1); 
+// just run lib/index.js
+require("./lib/index.js"); 

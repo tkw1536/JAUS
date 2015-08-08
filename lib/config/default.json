@@ -1,0 +1,6 @@
+{
+  "port": 3000, 
+  "SALT_WORK_FACTOR": 10, 
+  "session_secret": "not a secret! Please change me!", 
+  "mongodb_url": "mongodb://localhost/JAUS", 
+}

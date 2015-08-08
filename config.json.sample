@@ -1,0 +1,5 @@
+{
+  "port": 3000, 
+  "session_secret": "not a secret! Please change me!", 
+  "mongodb_url": "mongodb://localhost/JAUS"
+}
