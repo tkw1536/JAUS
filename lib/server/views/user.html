@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{siteName}} - Home</title>
+    <title>{{siteName}} - User Manager</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,72 +23,62 @@
           <table class="table">
             <thead>
               <tr>
-                {{#user.isAdmin}}
-                <th>Owner</th>
-                {{/user.isAdmin}}
-                <th>Short Name</th>
-                <th>URL</th>
-                <th>Frame</th>
-                <th>Question</th>
+                <th>Username</th>
+                <th>Max Links</th>
+                <th>Password</th>
+                <th>Admin?</th>
                 <th rowspan="2">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {{#links}}
+              {{#users}}
               <tr>
-                <form action="/!/!/edit" method="POST">
-                  {{#user.isAdmin}}
-                    <th>{{owner}}</th>
-                  {{/user.isAdmin}}
+                <form action="/!/!/userman/edit" method="POST">
                   <td>
-                    <input type="text" class="form-control" name="path" placeholder="Short Name" value="{{path}}" />
+                    <input type="text" class="form-control" name="name" placeholder="Username" readonly="readonly" value="{{name}}" />
                   </td>
                   <td>
-                    <input type="text" class="form-control" name="url" placeholder="URL" value="{{url}}"/>
+                    <input type="number" min="0" class="form-control" name="maxLinks" value="{{maxLinks}}" />
                   </td>
                   <td>
-                    <input type="checkbox" name="inFrame" {{#inFrame}}checked="checked"{{/inFrame}}/>
+                    <input type="password" name="password" class="form-control" placeholder="Password" />
                   </td>
                   <td>
-                    <input type="checkbox" name="isQuestion" {{#isQuestion}}checked="checked"{{/isQuestion}}/>
+                    <input type="checkbox" name="isAdmin" {{#isAdmin}}checked="checked"{{/isAdmin}}/>
                   </td>
                   <td>
-                    <input type="hidden" name="id" value="{{path}}" />
+                    <input type="hidden" name="id" value="{{name}}" />
                     <input type="submit" value="Update" class="btn btn-default"/>
                   </td>
                 </form>
-                <form action="/!/!/delete" method="POST">
+                <form action="/!/!/userman/delete" method="POST">
                   <td>
-                    <input type="hidden" name="id" value="{{path}}" />
+                    <input type="hidden" name="id" value="{{name}}" />
                     <input type="submit" value="Delete" class="btn btn-danger"/>
                   </td>
                 </form>
               </tr>
-              {{/links}}
-              {{#canCreateMore}}
+              {{/users}}
               <tr>
-                <form action="/!/!/new" method="POST">
-                  {{#user.isAdmin}}
-                    <th></th>
-                  {{/user.isAdmin}}
+                <form action="/!/!/userman/new" method="POST">
                   <td>
-                    <input type="text" class="form-control" name="path" placeholder="Short Name" />
+                    <input type="text" class="form-control" name="name" placeholder="Username" />
                   </td>
                   <td>
-                    <input type="text" class="form-control" name="url" placeholder="URL" />
+                    <input type="number" min="0" class="form-control" name="maxLinks" placeholder="Number of links" />
                   </td>
                   <td>
-                    <input type="checkbox" name="inFrame" />
+                    <input type="password" name="password" placeholder="Password" class="form-control" />
                   </td>
                   <td>
-                    <input type="checkbox" name="isQuestion" />
+                    <input type="checkbox" name="isAdmin"  />
                   </td>
+                  
                   <td rowspan="2">
                     <input type="submit" value="Create" class="btn btn-default"/>
                   </td>
                 </form>
               </tr>
-              {{/canCreateMore}}
             </tbody>
           </table>
         </div>
@@ -98,11 +88,9 @@
             Welcome, {{user.name}}!
           </div>
           <div class="list-group">
-            <a href="#" class="list-group-item active">Links</a>
+            <a href="/!/!/" class="list-group-item">Links</a>
             <a href="/!/!/password" class="list-group-item">Change Password</a>
-            {{#user.isAdmin}}
-            <a href="/!/!/userman" class="list-group-item">User Manager</a>
-            {{/user.isAdmin}}
+            <a href="/!/!/userman" class="list-group-item active">User Manager</a>
             <a href="/!/!/logout" class="list-group-item">Logout</a>
           </div>
         </div>
