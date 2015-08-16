@@ -27,4 +27,4 @@ node index.js
 
 ## License
 
-JAUS is &copy; Tom Wiesing 2015 and licensed under MIT License. See [License](license) for full license text.
+JAUS is &copy; Tom Wiesing 2015 and licensed under MIT License. See [License](License) for full license text.
