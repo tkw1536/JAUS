@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{siteName}} - Home</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/!/lib/css/offcanvas.css" rel="stylesheet">
+    <link href="/!/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+          <table class="table">
+            <thead>
+              <tr>
+                {{#user.isAdmin}}
+                <th>Owner</th>
+                {{/user.isAdmin}}
+                <th>Short Name</th>
+                <th>URL</th>
+                <th>Frame</th>
+                <th>Question</th>
+                <th rowspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#links}}
+              <tr>
+                <form action="/!/edit" method="POST">
+                  {{#user.isAdmin}}
+                    <th>{{owner}}</th>
+                  {{/user.isAdmin}}
+                  <td>
+                    <input type="text" class="form-control" name="path" placeholder="Short Name" value="{{path}}" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" name="url" placeholder="URL" value="{{url}}"/>
+                  </td>
+                  <td>
+                    <input type="checkbox" name="inFrame" {{#inFrame}}checked="checked"{{/inFrame}}/>
+                  </td>
+                  <td>
+                    <input type="checkbox" name="isQuestion" {{#isQuestion}}checked="checked"{{/isQuestion}}/>
+                  </td>
+                  <td>
+                    <input type="hidden" name="id" value="{{path}}" />
+                    <input type="submit" value="Update" class="btn btn-default"/>
+                  </td>
+                </form>
+                <form action="/!/delete" method="POST">
+                  <td>
+                    <input type="hidden" name="id" value="{{path}}" />
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                  </td>
+                </form>
+              </tr>
+              {{/links}}
+              {{#canCreateMore}}
+              <tr>
+                <form action="/!/new" method="POST">
+                  {{#user.isAdmin}}
+                    <th></th>
+                  {{/user.isAdmin}}
+                  <td>
+                    <input type="text" class="form-control" name="path" placeholder="Short Name" />
+                  </td>
+                  <td>
+                    <input type="text" class="form-control" name="url" placeholder="URL" />
+                  </td>
+                  <td>
+                    <input type="checkbox" name="inFrame" />
+                  </td>
+                  <td>
+                    <input type="checkbox" name="isQuestion" />
+                  </td>
+                  <td rowspan="2">
+                    <input type="submit" value="Create" class="btn btn-default"/>
+                  </td>
+                </form>
+              </tr>
+              {{/canCreateMore}}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <div class="alert alert-info" role="alert">
+            Welcome, {{user.name}}!
+          </div>
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Links</a>
+            <a href="/!/profile" class="list-group-item">Profile</a>
+            {{#user.isAdmin}}
+            <a href="/!/admin" class="list-group-item">Admin</a>
+            {{/user.isAdmin}}
+            <a href="/!/logout" class="list-group-item">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>
+          [{{siteName}}]
+          -
+          <a href="/!/about">About</a>
+          -
+          powered by <a href="https://github.com/tkw1536/JAUS" target="_blank">JAUS</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
