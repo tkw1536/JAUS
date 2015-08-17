@@ -1,7 +1,5 @@
 # JAUS - Yet Another Url Shortener (that starts with J)
 
-** JAUS is still a work in progress. It may or may not work yet (probably not) **
-
 JAUS is a really tiny URL shortener written in NodeJS + Express + MongoDB. It features:
 
 * URL Shortening (duh)
