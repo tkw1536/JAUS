@@ -25,6 +25,8 @@ cp config.json.sample config.json
 node index.js 
 ```
 
+The go to [http://localhost:3000/!/!/](http://localhost:3000/!/!/) to see the admin panel. Default username/password is admin/admin. 
+
 ## License
 
 JAUS is &copy; Tom Wiesing 2015 and licensed under MIT License. See [License](License) for full license text.
